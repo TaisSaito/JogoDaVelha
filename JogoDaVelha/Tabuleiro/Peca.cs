@@ -11,11 +11,12 @@ namespace tabuleiro
         public Tabuleiro tab { get; set; }
 
 
-        public Peca(Posicao posicao, Tabuleiro tab, Tipo tipo)
+        public Peca(Tabuleiro tab, Tipo tipo)
         {
-            this.posicao = posicao;
-            this.tipo = tipo;
+            this.posicao = null;
+            
             this.tab = tab;
+            this.tipo = tipo;
         }
 
 

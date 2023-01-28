@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using tabuleiro;
 
-namespace JogoDaVelha.Jogo
+namespace jogo
 {
-    internal class PecaO
+    class PecaO : Peca
     {
+        public PecaO(Tabuleiro tab, Tipo tipo) : base(tab, tipo)
+        {
+        }
+
+        public override string ToString()
+        {
+            return "O";
+        }
     }
+
+
+
+
 }

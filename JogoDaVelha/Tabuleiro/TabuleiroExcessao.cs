@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JogoDaVelha.Tabuleiro
+namespace tabuleiro
 {
-    internal class TabuleiroExcessao
+     class TabuleiroExcessao : Exception
     {
+        public TabuleiroExcessao(string msg) : base(msg){ 
+        }
+
     }
 }
