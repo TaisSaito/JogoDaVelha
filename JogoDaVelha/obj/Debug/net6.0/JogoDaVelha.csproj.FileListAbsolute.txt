@@ -13,3 +13,5 @@ C:\Saito\Csharp\JogoDaVelha\JogoDaVelha\JogoDaVelha\obj\Debug\net6.0\refint\Jogo
 C:\Saito\Csharp\JogoDaVelha\JogoDaVelha\JogoDaVelha\obj\Debug\net6.0\JogoDaVelha.pdb
 C:\Saito\Csharp\JogoDaVelha\JogoDaVelha\JogoDaVelha\obj\Debug\net6.0\JogoDaVelha.genruntimeconfig.cache
 C:\Saito\Csharp\JogoDaVelha\JogoDaVelha\JogoDaVelha\obj\Debug\net6.0\ref\JogoDaVelha.dll
+C:\Saito\Csharp\JogoDaVelha\JogoDaVelha\JogoDaVelha\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Saito\Csharp\JogoDaVelha\JogoDaVelha\JogoDaVelha\obj\Debug\net6.0\JogoDaVelha.csproj.CopyComplete
