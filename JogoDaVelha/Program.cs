@@ -4,6 +4,7 @@ using tabuleiro;
 using jogo;
 using Newtonsoft.Json;
 using System.Runtime.CompilerServices;
+using tutorial;
 
 namespace jogoDaVelha
 {
@@ -11,6 +12,12 @@ namespace jogoDaVelha
     {
         static void Main(string[] args)
         {
+
+            FuncoesDoTutorial.opcaoDeVerTutorial();
+
+
+
+
             var rankingList = new List<Ranking>();
 
             var jogador1 = new Ranking();
@@ -131,7 +138,7 @@ namespace jogoDaVelha
                         partida.terminada = true;
                     }
 
-                 
+
 
                     
 

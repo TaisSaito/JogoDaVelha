@@ -46,9 +46,66 @@ namespace JogoDaVelha
         //lendo a posição que o usuário digitar
         public static Posicao lerPosicaodaPeca()
         {
-            string[] posicaoDaPeca = Console.ReadLine().Split();
-            int linhaEscolhida = int.Parse(posicaoDaPeca[0]);
-            int colunaEscolhida = int.Parse(posicaoDaPeca[1]);
+
+
+
+            int[] posicaoDaPeca = new int[2];
+            int opcaoDoUsuario = int.Parse(Console.ReadLine());
+
+            if (opcaoDoUsuario == 1)
+            {
+                posicaoDaPeca[0] = 0;
+                posicaoDaPeca[1] = 0;
+            }
+            else if (opcaoDoUsuario == 2)
+            {
+                posicaoDaPeca[0] = 0;
+                posicaoDaPeca[1] = 1;
+            }
+            else if (opcaoDoUsuario == 3)
+            {
+                posicaoDaPeca[0] = 0;
+                posicaoDaPeca[1] = 2;
+            }
+            else if (opcaoDoUsuario == 4)
+            {
+                posicaoDaPeca[0] = 1;
+                posicaoDaPeca[1] = 0;
+            }
+            else if (opcaoDoUsuario == 5)
+            {
+                posicaoDaPeca[0] = 1;
+                posicaoDaPeca[1] = 1;
+            }
+            else if (opcaoDoUsuario == 6)
+            {
+                posicaoDaPeca[0] = 1;
+                posicaoDaPeca[1] = 2;
+            }
+            else if (opcaoDoUsuario == 7)
+            {
+                posicaoDaPeca[0] = 2;
+                posicaoDaPeca[1] = 0;
+            }
+            else if (opcaoDoUsuario == 8)
+            {
+                posicaoDaPeca[0] = 2;
+                posicaoDaPeca[1] = 1;
+            }
+            else if (opcaoDoUsuario == 9)
+            {
+                posicaoDaPeca[0] = 2;
+                posicaoDaPeca[1] = 2;
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Digite uma opção válida");
+                lerPosicaodaPeca();
+            }
+
+            int linhaEscolhida = posicaoDaPeca[0];
+            int colunaEscolhida = posicaoDaPeca[1];
             return new Posicao(linhaEscolhida, colunaEscolhida);
 
 
