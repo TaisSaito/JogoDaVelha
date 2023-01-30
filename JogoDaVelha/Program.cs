@@ -29,42 +29,48 @@ namespace jogoDaVelha
                 rankingList = JsonConvert.DeserializeObject<List<Ranking>>(ranking);
             }
 
-            Console.WriteLine("Digite seu nome:");
-            string nome = Console.ReadLine();
 
-            if (nome != null && (rankingList.Where(b => b.NomeJogador == nome)?.Select(b => b)?.FirstOrDefault() != null))
+
+
+            Console.Clear();
+            Console.WriteLine("Digite o nome do jogador X:");
+            string nomeJogador1 = Console.ReadLine();
+
+            if (nomeJogador1 != null && (rankingList.Where(b => b.NomeJogador == nomeJogador1)?.Select(b => b)?.FirstOrDefault() != null))
             {
-                jogador1 = rankingList.Where(b => b.NomeJogador == nome)?.Select(b => b)?.FirstOrDefault();
+                jogador1 = rankingList.Where(b => b.NomeJogador == nomeJogador1)?.Select(b => b)?.FirstOrDefault();
             }
             else
             {
                 jogador1 = new Ranking()
                 {
-                    NomeJogador = nome,
-                    NumeroDeDerrotas = 0,
+                    NomeJogador = nomeJogador1,
                     NumeroDeVitorias = 0,
+                    /*NumeroDeDerrotas = 0,
                     NumeroDeEmpates = 0,
-                    NumeroDePartidas = 0,
+                    NumeroDePartidas = 0,*/
                 };
                 rankingList.Add(jogador1);
             }
 
-            Console.WriteLine("Digite seu nome:");
-            string nome2 = Console.ReadLine();
 
-            if (nome2 != null && (rankingList.Where(b => b.NomeJogador == nome2)?.Select(b => b)?.FirstOrDefault() != null))
+            Console.WriteLine();
+            Console.WriteLine("Digite o nome do jogador O:");
+            string nomeJogador2 = Console.ReadLine();
+
+            if (nomeJogador2 != null && (rankingList.Where(b => b.NomeJogador == nomeJogador2)?.Select(b => b)?.FirstOrDefault() != null))
             {
-                jogador2 = rankingList.Where(b => b.NomeJogador == nome2)?.Select(b => b)?.FirstOrDefault();
+                jogador2 = rankingList.Where(b => b.NomeJogador == nomeJogador2)?.Select(b => b)?.FirstOrDefault();
             }
             else
             {
                 jogador2 = new Ranking()
                 {
-                    NomeJogador = nome2,
-                    NumeroDeDerrotas = 0,
+                    NomeJogador = nomeJogador2,
                     NumeroDeVitorias = 0,
+                    /*NumeroDeDerrotas = 0,
                     NumeroDeEmpates = 0,
-                    NumeroDePartidas = 0,
+                    NumeroDePartidas = 0,*/
                 };
                 rankingList.Add(jogador2);
             }
@@ -75,6 +81,10 @@ namespace jogoDaVelha
 
 
                 Partida partida = new Partida();
+
+            Console.Clear();
+            FuncoesDoTutorial.TabuleiroTutorialComPosicoes();
+            Console.WriteLine();            
             Tela.imprimirTabuleiro(tab);
 
             while (!partida.terminada)
@@ -111,29 +121,53 @@ namespace jogoDaVelha
 
 
                     Console.WriteLine();
+                    Console.WriteLine($"Jogador X: {nomeJogador1} | Jogador O: {nomeJogador2}");
                     Console.WriteLine("Turno:" + partida.turno);
                     Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
 
-                    Console.Write("Digite a posição da peça, linha espaço coluna: ");
+                    Console.Write("Digite a posição da peça: ");
                     Posicao posicaoEscolhida = Tela.lerPosicaodaPeca();
                     tab.validarPosicao(posicaoEscolhida);
                     
                     partida.realizaJogada(posicaoEscolhida, tab);
                     Console.Clear();
+                    FuncoesDoTutorial.TabuleiroTutorialComPosicoes();
+                    Console.WriteLine();
                     Tela.imprimirTabuleiro(tab);
 
                     var (tipoJogador, vitoria) = partida.ganhouPartida(tab);
+
+                    string vencedor;
+                    if(tipoJogador == Tipo.X)
+                    {
+                        vencedor = nomeJogador1;
+
+                        /*var vitorias = rankingList.Where(b => b.NomeJogador == nomeJogador2)?.Select(b => b)?.FirstOrDefault();
+
+                        rankingList.Add(vitorias => vitorias.NumeroDeVitorias == Numer)*/
+                        
+                        
+                    }
+                    else
+                    {
+                        vencedor = nomeJogador2;
+                    }
+
+
+
                     if (vitoria)
                     {
-                        Console.WriteLine($"Parabéns! {tipoJogador} ganhou!");
+                        Console.WriteLine($"Parabéns! {vencedor} ganhou!");
                         Console.ReadLine();
+                        var rankingSaving = JsonConvert.SerializeObject(rankingList);
+                        
+                        
+                        File.WriteAllText($@"C:\Users\user\Desktop\Salvardados\ranking.json", rankingSaving);
                         partida.terminada = true;
                     }
                     else if(tipoJogador == Tipo.Empate)
                     {
                         Console.WriteLine($"Empate!! Deu velha");
-                        var rankingSaving = JsonConvert.SerializeObject(rankingList);
-                        File.WriteAllText($@"C:\Users\user\Desktop\Salvardados\ranking.json", rankingSaving);
                         Console.ReadLine();
                         partida.terminada = true;
                     }

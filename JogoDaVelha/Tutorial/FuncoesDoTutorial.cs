@@ -44,7 +44,9 @@ namespace tutorial
                 }
                 else if (opcaoTutorial.Equals("2"))
                 {
+                    Console.Clear();
                     Console.WriteLine("Vamos Jogar!");
+                    Console.WriteLine("Aperte Enter para continuar");
                     Console.ReadLine();
                     return true;
                 }
